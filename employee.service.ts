@@ -41,12 +41,10 @@ export class EmployeeService {
   }
 
   findByDomain(): Observable<Employee[]> {
-    console.log("i ca,e here");
     return this.httpClient.get<Employee[]>(`${this.baseURL}/techEmp`);
   }
 
   findByNonTechDomain(): Observable<Employee[]> {
-    console.log("i ca,e to non tech here");
     return this.httpClient.get<Employee[]>(`${this.baseURL}/nonTechEmp`);
 }
 }

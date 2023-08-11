@@ -1,0 +1,56 @@
+<h2> Employee List</h2>
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by employee name"
+          [(ngModel)]="firstName"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchByFirstName()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline-secondary" type="button" (click)="getTechEmps()" style="margin-left:60px;color:#EEE2DC;
+    background:#AC3B61;font-size:17px;font-weight: 600;">Tech Emps
+      </button>
+
+      <button class="btn btn-outline-secondary" type="button" (click)="getNonTechEmps()"
+          style="color:#EEE2DC;background: #AC3B61;font-size:17px;font-weight: 600;">Non Tech Emps     </button>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> First Name</th>
+            <th> Last Name </th>
+            <th> Email Id</th>
+            <th> </th>
+            <th> Actions </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let employee of employees" >
+            <td> {{ employee.firstName }} </td>
+            <td> {{ employee.lastName }} </td>
+            <td> {{ employee.emailId }} </td>
+            <td>
+                <button (click) = "updateEmployee(employee.id)" class = "btn btn-info"> Update</button>
+                <button (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                <button (click) = "employeeDetails(employee.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+            </td>
+        </tr>
+        <tr *ngIf="employees !== null">
+            <button class="m-3 btn btn-sm btn-danger" (click)="removeAllEmployees()">
+                Remove All
+              </button>
+        </tr>
+    </tbody>
+</table>
